@@ -13,6 +13,7 @@ const countrycurrenciessby = document.querySelector('.currencies-sby')
 const countrylan = document.querySelector('.lan')
 const border = document.querySelector('.border-countries')
 const theme = document.querySelector('.theme')
+const mapLink = document.querySelector('.arch')
 
 fetch(`https://restcountries.com/v3.1/name/${countryname}?fullText=true`).then((res)=>{
     return res.json()
@@ -29,6 +30,8 @@ fetch(`https://restcountries.com/v3.1/name/${countryname}?fullText=true`).then((
 //     mapIframe.src = embedUrl;
 // }
     // console.log(Object.values(country.name.nativeName)[0].common)
+
+    console.log(country)
     flagimg.src = country.flags.svg
     countrynameH1.innerText = country.name.common
     if(country.name.nativeName){
@@ -59,6 +62,12 @@ fetch(`https://restcountries.com/v3.1/name/${countryname}?fullText=true`).then((
             border.append(borderCountrytag)
         })
     })}
+
+    if(country.maps){
+        mapLink.innerText = country.name.common
+        mapLink.href = country.maps.googleMaps
+    }
+    console.log(country.maps.googleMaps)
     
     
    
